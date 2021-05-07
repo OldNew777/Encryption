@@ -118,6 +118,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <OpenMPSupport>true</OpenMPSupport>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -132,6 +133,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <OpenMPSupport>true</OpenMPSupport>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -142,21 +144,15 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Cipher\src\AES_128.cpp" />
-    <ClCompile Include="Cipher\src\BlockCipher.cpp" />
-    <ClCompile Include="Cipher\src\Cipher.cpp" />
     <ClCompile Include="Cipher\src\RC4.cpp" />
-    <ClCompile Include="Cipher\src\StreamCipher.cpp" />
-    <ClCompile Include="Hash\src\Hash.cpp" />
+    <ClCompile Include="DataGenerator.cpp" />
     <ClCompile Include="Hash\src\SHA_3_256.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Cipher\include\AES_128.h" />
-    <ClInclude Include="Cipher\include\BlockCipher.h" />
-    <ClInclude Include="Cipher\include\Cipher.h" />
     <ClInclude Include="Cipher\include\RC4.h" />
-    <ClInclude Include="Cipher\include\StreamCipher.h" />
-    <ClInclude Include="Hash\include\Hash.h" />
+    <ClInclude Include="DataGenerator.h" />
     <ClInclude Include="Hash\include\SHA_3_256.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
