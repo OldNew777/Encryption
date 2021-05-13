@@ -78,11 +78,11 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>G:\OldNew\3rdYear2\Secretary\hw\Encryption\hw2\Encryption\Encryption\Hash\include;G:\OldNew\3rdYear2\Secretary\hw\Encryption\hw2\Encryption\Encryption\Cipher\include;$(IncludePath)</IncludePath>
+    <IncludePath>G:\OldNew\3rdYear2\Secretary\hw\Encryption\hw2\Encryption\Encryption;G:\OldNew\3rdYear2\Secretary\hw\Encryption\hw2\Encryption\Encryption\Hash\include;G:\OldNew\3rdYear2\Secretary\hw\Encryption\hw2\Encryption\Encryption\Cipher\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>G:\OldNew\3rdYear2\Secretary\hw\Encryption\hw2\Encryption\Encryption\Hash\include;G:\OldNew\3rdYear2\Secretary\hw\Encryption\hw2\Encryption\Encryption\Cipher\include;$(IncludePath)</IncludePath>
+    <IncludePath>G:\OldNew\3rdYear2\Secretary\hw\Encryption\hw2\Encryption\Encryption;G:\OldNew\3rdYear2\Secretary\hw\Encryption\hw2\Encryption\Encryption\Hash\include;G:\OldNew\3rdYear2\Secretary\hw\Encryption\hw2\Encryption\Encryption\Cipher\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -154,6 +154,7 @@
     <ClInclude Include="Cipher\include\RC4.h" />
     <ClInclude Include="DataGenerator.h" />
     <ClInclude Include="Hash\include\SHA_3_256.h" />
+    <ClInclude Include="MathFunction.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

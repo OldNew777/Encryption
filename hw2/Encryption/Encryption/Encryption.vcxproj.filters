@@ -42,11 +42,11 @@
     <ClCompile Include="Cipher\src\RC4.cpp">
       <Filter>Cipher\src</Filter>
     </ClCompile>
-    <ClCompile Include="Hash\src\SHA_3_256.cpp">
-      <Filter>Hash\src</Filter>
-    </ClCompile>
     <ClCompile Include="DataGenerator.cpp">
       <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="Hash\src\SHA_3_256.cpp">
+      <Filter>Hash\src</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -56,10 +56,13 @@
     <ClInclude Include="Cipher\include\RC4.h">
       <Filter>Cipher\include</Filter>
     </ClInclude>
+    <ClInclude Include="DataGenerator.h">
+      <Filter>include</Filter>
+    </ClInclude>
     <ClInclude Include="Hash\include\SHA_3_256.h">
       <Filter>Hash\include</Filter>
     </ClInclude>
-    <ClInclude Include="DataGenerator.h">
+    <ClInclude Include="MathFunction.h">
       <Filter>include</Filter>
     </ClInclude>
   </ItemGroup>

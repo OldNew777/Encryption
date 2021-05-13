@@ -1,6 +1,5 @@
 #include "RC4.h"
 
-#include <omp.h>
 #include <assert.h>
 #include <algorithm>
 
@@ -10,7 +9,6 @@ void RC4::Init(uint8_t* key, uint32_t keyLen)
 	assert(keyLen <= 256);
 
 	uint8_t k[256];
-#pragma omp parallel for
 	for (int i = 0; i < 256; ++i) {
 		s[i] = i;
 		k[i] = key[i % keyLen];
