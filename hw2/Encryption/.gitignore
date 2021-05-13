@@ -1,3 +1,5 @@
 .vs
 x64
 Encryption/x64
+*.in
+*.out
