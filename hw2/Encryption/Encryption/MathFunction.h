@@ -50,4 +50,10 @@ public:
 		}
 		return ans;
 	}
+	inline static uint8_t MutAddGF(uint8_t a[4], uint8_t b[4]) {
+		uint8_t ans = 0;
+		for (int i = 0; i < 4; ++i)
+			ans ^= MutGF(a[i], b[i]);
+		return ans;
+	}
 };

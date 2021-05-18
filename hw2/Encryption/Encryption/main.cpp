@@ -25,7 +25,6 @@ void Test_AES_128() {
 	uint32_t dataSum_Mb = 100, keyLen = 16, plainLen = dataSum_Mb << 17, IVLen = 16, cipherLen;
 
 	uint8_t* key = DataGenerator(keyLen),
-		* IV = DataGenerator(IVLen),
 		* plainData = DataGenerator(plainLen);
 
 	// 导出源数据
@@ -33,38 +32,49 @@ void Test_AES_128() {
 	plainOut.write((char*)plainData, plainLen);
 	plainOut.close();
 
-	AES_128 aes_128;
+	// DEBUG
+	uint8_t keyPreset[16] = { 0 };
+	uint8_t plainDataPreset[16] = {
+		0x00, 0x00, 0x01, 0x01,
+		0x03, 0x03, 0x07, 0x07,
+		0x0f, 0x0f, 0x1f, 0x1f,
+		0x3f, 0x3f, 0x7f, 0x7f,
+	};
+	uint8_t cipherDataTest[16];
+	AES_128::TestCipher(keyPreset, plainDataPreset, cipherDataTest);
 
-	// 运行并计时
-	clock_t start = clock();
-	uint8_t* cipherData = aes_128.Encrypt(plainData, plainLen, cipherLen, key, IV);
-	clock_t end = clock();
-	double speedEncrypt = dataSum_Mb / double(end - start) * 1000;
+	//AES_128 aes_128;
 
-	// 导出加密数据
-	ofstream cipherOut("AES_128.out", ios::out | ios::binary);
-	cipherOut.write((char*)cipherData, cipherLen);
-	cipherOut.close();
+	//// 运行并计时
+	//clock_t start = clock();
+	//uint8_t* cipherData = aes_128.Encrypt(plainData, plainLen, cipherLen, key);
+	//clock_t end = clock();
+	//double speedEncrypt = dataSum_Mb / double(end - start) * 1000;
 
-	uint32_t plainLen2;
-	start = clock();
-	uint8_t* plainData2 = aes_128.Decrypt(cipherData, cipherLen, plainLen2, key, IV);
-	end = clock();
-	double speedDecrypt = dataSum_Mb / double(end - start) * 1000;
+	//// 导出加密数据
+	//ofstream cipherOut("AES_128.out", ios::out | ios::binary);
+	//cipherOut.write((char*)cipherData, cipherLen);
+	//cipherOut.close();
 
-	// 速率
+	//uint32_t plainLen2;
+	//start = clock();
+	//uint8_t* plainData2 = aes_128.Decrypt(cipherData, cipherLen, plainLen2, key);
+	//end = clock();
+	//delete[] cipherData;
+	//double speedDecrypt = dataSum_Mb / double(end - start) * 1000;
+
+	//// 速率
+	//cout << "Length : " << plainLen << " ?= " << plainLen2 << "\n";
 	//if (plainLen == plainLen2 && memcmp(plainData, plainData2, plainLen) == 0) {
-	if (1) {
-		cout << "AES_128 Encrypt Speed = " << speedEncrypt << " Mbps\n";
-		cout << "AES_128 Decrypt Speed = " << speedDecrypt << " Mbps\n\n";
-	}
-	else
-		cout << "AES_128 Wrong answer!\n\n";
+	//	//if (1) {
+	//	cout << "AES_128 Encrypt Speed = " << speedEncrypt << " Mbps\n";
+	//	cout << "AES_128 Decrypt Speed = " << speedDecrypt << " Mbps\n\n";
+	//}
+	//else
+	//	cout << "AES_128 Wrong answer!\n\n";
 
 	delete[] key;
 	delete[] plainData;
-	delete[] cipherData;
-	delete[] IV;
 }
 
 void Test_RC4() {
