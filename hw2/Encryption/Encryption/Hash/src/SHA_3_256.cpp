@@ -1,32 +1,18 @@
 #include "SHA_3_256.h"
 
-void SHA_3_256::absorb(uint8_t data[], uint64_t n) {
-	for (uint64_t i = 0; i < n; ++i) {
-		state.bytes[absorbed++] ^= data[i];
+void SHA_3_256::GetHash(uint8_t data[], uint64_t len, uint8_t hash[HASH_LEN]) {
+	uint64_t state[STATE_WORDS] = { 0 };
 
-		if (absorbed == RATE) {
-			keccak();
-			absorbed = 0;
-		}
-	}
+	for (size_t i = 0; i < len / BLOCK_SIZE; ++i)
+		Iteration(data + i * BLOCK_SIZE, state);
 
-	padpoint = absorbed;
-}
+	uint8_t buffer[BLOCK_SIZE] = { 0 };
+	memcpy(buffer, data + len / BLOCK_SIZE * BLOCK_SIZE, len % BLOCK_SIZE);
 
-void SHA_3_256::squeeze(uint8_t digest[DIGEST]) {
-	state.bytes[padpoint] ^= 0x06;
-	state.bytes[RATE - 1] ^= 0x80;
+	buffer[len % BLOCK_SIZE] |= 0x06;
+	buffer[BLOCK_SIZE - 1] |= 0x80;
 
-	keccak();
+	Iteration(buffer, state);
 
-	for (int i = 0; i < DIGEST; ++i) {
-		digest[i] = state.bytes[i];
-	}
-}
-
-void SHA_3_256::GetHash(uint8_t data[], uint64_t n, uint8_t digest[DIGEST]) {
-	memset(state.bytes, 0, WIDTH);
-	padpoint = absorbed = 0;
-	absorb(data, n);
-	squeeze(digest);
+	memcpy(hash, state, 32);
 }

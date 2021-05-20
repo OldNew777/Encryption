@@ -2,6 +2,7 @@
 
 #include <assert.h>
 #include <algorithm>
+#include <stdio.h>
 
 void RC4::Init(uint8_t* key, uint32_t keyLen)
 {
@@ -30,10 +31,25 @@ void RC4::Encrypt(uint8_t* data, uint32_t lenSrc)
 		i = (i + 1) & 0xff;
 		j = (j + s[i]) & 0xff;
 		std::swap(s[i], s[j]);
-		data[k] ^= (s[i] + s[j]) & 0xff;
+		data[k] ^= s[(s[i] + s[j]) & 0xff];
 	}
 	this->encrypt_index_i = i;
 	this->encrypt_index_j = j;
+}
+
+uint8_t* RC4::GenerateStreamKey(uint32_t lenBytes)
+{
+	uint8_t* key = new uint8_t[lenBytes];
+	uint32_t i = this->encrypt_index_i, j = this->encrypt_index_j;
+	for (uint32_t k = 0; k < lenBytes; ++k) {
+		i = (i + 1) & 0xff;
+		j = (j + s[i]) & 0xff;
+		std::swap(s[i], s[j]);
+		key[k] = s[(s[i] + s[j]) & 0xff];
+	}
+	this->encrypt_index_i = i;
+	this->encrypt_index_j = j;
+	return key;
 }
 
 void RC4::PrintSBox() const

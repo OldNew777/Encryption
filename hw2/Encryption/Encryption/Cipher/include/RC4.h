@@ -11,6 +11,7 @@ private:
 public:
 	void Init(uint8_t* key, uint32_t keyLen);
 	void Encrypt(uint8_t* data, uint32_t lenSrc);
+	uint8_t* GenerateStreamKey(uint32_t lenBytes);
 
 	void PrintSBox() const;
 };

@@ -48,6 +48,9 @@
     <ClCompile Include="Hash\src\SHA_3_256.cpp">
       <Filter>Hash\src</Filter>
     </ClCompile>
+    <ClCompile Include="MathFunction.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Cipher\include\AES_128.h">
