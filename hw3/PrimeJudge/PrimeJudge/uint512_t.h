@@ -33,6 +33,8 @@ public:
 
 	inline void Rand() {
 		for (int i = 0; i < 8; ++i) {
+			// rand() range in [0, 32767], namely 15bits
+			// 64 = 15*4 + 4
 			uint64_t d0 = rand(), d1 = rand(), d2 = rand(), d3 = rand(), d4 = rand();
 			data[i] = (d0 << 49) | (d1 << 34) | (d2 << 19) | (d3 << 4) | (d4 & 0b1111);
 		}
