@@ -144,11 +144,16 @@
   <ItemGroup>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MillerRabin.cpp" />
+    <ClCompile Include="uint1024_t.cpp" />
     <ClCompile Include="uint512_t.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MillerRabin.h" />
+    <ClInclude Include="uint1024_t.h" />
     <ClInclude Include="uint512_t.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="process.py" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -24,6 +24,9 @@
     <ClCompile Include="uint512_t.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="uint1024_t.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MillerRabin.h">
@@ -32,5 +35,11 @@
     <ClInclude Include="uint512_t.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="uint1024_t.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="process.py" />
   </ItemGroup>
 </Project>
